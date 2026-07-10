@@ -31,8 +31,3 @@ The pre-commit hook only formats Python files with Black. It does not lint the
 code or enforce additional style rules.
 
 ## Assignment requirements
-
-- [ ] Add the assignment requirements here.
-- [ ] Replace the placeholder function in `src/collections/__init__.py`.
-- [ ] Replace the placeholder test and add tests for every requirement.
-- [ ] Complete the pseudocode and integrity statement in `docs/`.
