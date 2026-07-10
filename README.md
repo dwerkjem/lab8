@@ -1,21 +1,54 @@
-# Lab 8 Fountain View Hall
+# Collections
 
 **Student:** Derek R. Neilson  
 **Course:** Programming 1  
-**Lab:** Lab 8 — Lab 8 Collections
+**Lab:** Lab 8 — Collections lab 8
 
+Practicing collections and meeting or exceeding the requirements in the requirements document.
 
+## Set up the project
+
+```bash
+git init
+uv sync --dev
+uv run pre-commit install
+```
 
 ## Run the tests
 
 ```bash
-uv sync --dev
 uv run pytest
 ```
+
+## Format the code
+
+```bash
+uv run black .
+uv run pre-commit run --all-files
+```
+
+The pre-commit hook only formats Python files with Black. It does not lint the
+code or enforce additional style rules.
 
 ## Assignment requirements
 
 - [ ] Add the assignment requirements here.
-- [ ] Replace the placeholder function in `src/lab_8_fountain_view_hall/__init__.py`.
+- [ ] Replace the placeholder function in `src/collections/__init__.py`.
 - [ ] Replace the placeholder test and add tests for every requirement.
 - [ ] Complete the pseudocode and integrity statement in `docs/`.
+
+## Project structure
+
+```text
+.
+├── docs/
+│   ├── integrity-statement.md
+│   └── pseudocode.md
+├── src/collections/
+│   └── __init__.py
+├── tests/
+│   └── test_lab.py
+├── .pre-commit-config.yaml
+├── pyproject.toml
+└── README.md
+```
