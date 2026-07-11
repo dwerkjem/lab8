@@ -119,6 +119,6 @@ def get_client_information(
 def get_event_information(): ...
 
 
-def main() -> bool:
-    """Replace this placeholder with the lab implementation."""
-    return True
+def main() -> None:
+    """Run the lab program."""
+    return None
