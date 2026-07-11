@@ -1,5 +1,5 @@
-from lists_ import lab
+from lists_ import main
 
 
 def test_lab_passes() -> None:
-    assert lab()
+    assert main()
