@@ -51,7 +51,7 @@ wheels = [
 ]
 
 [[package]]
-name = "collections"
+name = "lists"
 version = "0.1.0"
 source = { editable = "." }
 

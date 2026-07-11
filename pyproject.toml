@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "collections"
+name = "lists"
 version = "0.1.0"
-description = "Practicing collections and meeting or exceeding the requirements in the requirements document."
+description = "Practicing lists and meeting or exceeding the requirements in the requirements document."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
@@ -18,7 +18,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/collections"]
+packages = ["src/lists"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

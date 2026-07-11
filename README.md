@@ -1,10 +1,10 @@
-# Collections
+# Lists
 
 **Student:** Derek R. Neilson  
 **Course:** Programming 1  
-**Lab:** Lab 8 — Collections lab 8
+**Lab:** Lab 8 — Lists lab 8
 
-Practicing collections and meeting or exceeding the requirements in the requirements document.
+Practicing lists and meeting or exceeding the requirements in the requirements document.
 
 ## Set up the project
 

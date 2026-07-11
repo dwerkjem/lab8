@@ -2,7 +2,7 @@
 
 **Student:** Derek R. Neilson  
 **Course:** Programming 1  
-**Lab:** Lab 8 — Collections lab 8  
+**Lab:** Lab 8 — Lists lab 8  
 **Date:** 7/9/26
 
 I affirm that this submission complies with the course's academic-integrity and
