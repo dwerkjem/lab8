@@ -10,6 +10,9 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
 
+[project.scripts]
+"lists" = "lists_:main"
+
 [dependency-groups]
 dev = [
     "black>=25.0",
@@ -18,7 +21,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/lists"]
+packages = ["src/lists_"]
 
 [tool.pytest.ini_options]
 addopts = "-q"
