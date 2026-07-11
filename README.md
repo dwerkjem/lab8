@@ -14,6 +14,12 @@ uv sync --dev
 uv run pre-commit install
 ```
 
+## Run the project
+
+```bash
+uv run lists
+```
+
 ## Run the tests
 
 ```bash
