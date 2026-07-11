@@ -1,4 +1,4 @@
-from lists import lab
+from lists_ import lab
 
 
 def test_lab_passes() -> None:
