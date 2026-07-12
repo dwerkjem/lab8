@@ -2,7 +2,7 @@
 
 from typing import cast
 
-from lists_.helpers import input_or_arg
+from lists_.helpers import input_or_arg, terminal_width
 from lists_.models import DayState, EventField, EventRecord
 
 event_records: list[EventRecord] = []
@@ -33,7 +33,7 @@ def display_reservation_summary(record: EventRecord) -> None:
 
     print(f"""
 Reservation Summary
-{"-" * 65}
+{"-" * terminal_width}
 Status: {record[EventField.STATUS]}
 Event code: {record[EventField.CODE]}
 Client: {record[EventField.CLIENT_NAME]} ({record[EventField.CLIENT_EMAIL]})
@@ -52,7 +52,7 @@ Wedding-cleanup fee: ${record[EventField.WEDDING_CLEANUP_FEE]:,.2f}
 Large-event discount: -${record[EventField.DISCOUNT]:,.2f}
 Final charge: ${record[EventField.FINAL_CHARGE]:,.2f}
 Required deposit: ${record[EventField.DEPOSIT_REQUIRED]:,.2f}
-{"-" * 65}
+{"-" * terminal_width}
 """)
 
 
@@ -82,12 +82,16 @@ def search_records(
     search_text = ""
 
     while not search_text:
-        search_text = str(
-            input_or_arg(
-                search_value,
-                "Search by event code, client name, or event name: ",
+        search_text = (
+            str(
+                input_or_arg(
+                    search_value,
+                    "Search by event code, client name, or event name: ",
+                )
             )
-        ).strip().casefold()
+            .strip()
+            .casefold()
+        )
 
         if not search_text:
             print("Invalid search. Please enter a value to search for.")
@@ -147,14 +151,14 @@ def calculate_statistics(
 
     print(f"""
 Event Statistics
-{"-" * 65}
+{"-" * terminal_width}
 Total events: {total_events}
 Total guests: {total_guests}
 Total revenue: ${total_revenue:,.2f}
 Average guests per event: {average_guests:,.2f}
 Largest event: {largest_name} ({largest_guests} guests)
 Smallest event: {smallest_name} ({smallest_guests} guests)
-{"-" * 65}
+{"-" * terminal_width}
 """)
 
     return statistics

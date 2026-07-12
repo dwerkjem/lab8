@@ -4,6 +4,7 @@ Description: Helper functions for my project
 """
 
 from typing import TypeVar
+import os
 
 T = TypeVar(
     "T"
@@ -50,3 +51,6 @@ def yes_or_no(prompt: str, value: bool | None = None) -> bool:
             return False
 
         print("Please enter yes or no.")
+
+
+terminal_width = os.get_terminal_size().columns
