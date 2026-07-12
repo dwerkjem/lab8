@@ -4,7 +4,7 @@ Description: Helper functions for my project
 """
 
 from typing import TypeVar
-import os
+import shutil
 
 T = TypeVar(
     "T"
@@ -53,4 +53,7 @@ def yes_or_no(prompt: str, value: bool | None = None) -> bool:
         print("Please enter yes or no.")
 
 
-terminal_width = os.get_terminal_size().columns
+terminal_width = shutil.get_terminal_size(
+    fallback=(120, 30)
+).columns  # I remember using this at one point.
+# but honestly I dont know why it is in `shutil` instead of `os` but the `os` one fallback dose not return a int
