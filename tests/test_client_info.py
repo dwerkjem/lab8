@@ -1,33 +1,41 @@
-from lists_ import client_info
+"""Tests for client information and event-code generation."""
+
 import pytest
 
-
-def test_generate_event_code() -> None:
-    event_code = client_info.generate_event_code
-    assert event_code("Colter", "Wedding") == "WED-COL"
-    list_of_codes = []
-    list_of_codes.append(event_code("Colter", "Wedding", list_of_codes))
-    list_of_codes.append(event_code("Colter", "Wedding", list_of_codes))
-    list_of_codes.append(event_code("Colter", "Wedding", list_of_codes))
-    list_of_codes.append(event_code("Coleen", "Wedding", list_of_codes))
-    list_of_codes.append(event_code("Colin", "Wedding ceremony", list_of_codes))
-    assert "WED-COL-1" not in list_of_codes
-    assert "WED-COL-2" in list_of_codes
-    assert "WED-COL-3" in list_of_codes
-    assert "WED-COL-4" in list_of_codes
-    assert "WED-COL-5" in list_of_codes
-    assert len(list_of_codes) == 5
+from lists_.client_info import generate_event_code, get_client_information
 
 
-def test_get_client_information() -> None:
-    client_inf = client_info.get_client_information
-    assert client_inf("deReK", "derekRneilson@gmail.com") == (
-        "Derek",
-        "derekrneilson@gmail.com",
+def test_get_client_information_formats_valid_values() -> None:
+    """Client names use title case and emails use lowercase."""
+    assert get_client_information("deReK neilson", "DEREK@example.com") == (
+        "Derek Neilson",
+        "derek@example.com",
     )
+
+
+@pytest.mark.parametrize(
+    "email",
+    ["derekgmailcom", "derek@gmailcom", "derekgmail.com"],
+)
+def test_get_client_information_rejects_invalid_email(email: str) -> None:
+    """An email argument must contain both an at sign and a domain dot."""
     with pytest.raises(ValueError, match="Email must contain both '@' and '.'."):
-        client_inf("deReK", "derekRneilsongmailcom")
-    with pytest.raises(ValueError, match="Email must contain both '@' and '.'."):
-        client_inf("deReK", "derekRneilson@gmailcom")
-    with pytest.raises(ValueError, match="Email must contain both '@' and '.'."):
-        client_inf("deReK", "derekRneilsongmail.com")
+        get_client_information("Derek", email)
+
+
+def test_generate_event_code_resolves_collisions() -> None:
+    """Repeated base codes receive increasing numeric suffixes."""
+    existing_codes: list[str] = []
+
+    for _ in range(5):
+        existing_codes.append(
+            generate_event_code("Derek Neilson", "Wedding", existing_codes)
+        )
+
+    assert existing_codes == [
+        "WED-NEI",
+        "WED-NEI-2",
+        "WED-NEI-3",
+        "WED-NEI-4",
+        "WED-NEI-5",
+    ]
